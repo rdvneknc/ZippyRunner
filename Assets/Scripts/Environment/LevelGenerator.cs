@@ -7,14 +7,24 @@ public class LevelGenerator : MonoBehaviour
     public GameObject[] section;
     public int zPosition = 200;
     public bool createSection = false;
-    void Start()
-    {
-        
-    }
+    public int sectionNumber;
 
-    // Update is called once per frame
+   
     void Update()
     {
-        
+        if (createSection == false)
+        {
+            createSection = true;
+            StartCoroutine(GenerateSection());
+        }
+    }
+
+    IEnumerator GenerateSection()
+    {
+        sectionNumber = Random.Range(0, 3);
+        Instantiate(section[sectionNumber], new Vector3(0, 0, zPosition), Quaternion.identity);
+        zPosition += 200;
+        yield return new WaitForSeconds(6);
+        createSection = false;
     }
 }
