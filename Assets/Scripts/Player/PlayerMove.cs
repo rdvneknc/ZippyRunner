@@ -4,24 +4,22 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    public float movementSpeed = 0.1f;
-    public float changePositionSpeed = 5f;
+    public float movementSpeed = 1f;
+    public float changePositionSpeed = 10f;
 
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private CharacterController characterController;
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed, Space.World);
+        Vector3 direction = Vector3.forward * Time.deltaTime * movementSpeed;
 
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             if (this.gameObject.transform.position.x > RoadBoundaries.leftSide)
             {
-                transform.Translate(Vector3.left * Time.deltaTime * changePositionSpeed);
+                direction += Vector3.left * Time.deltaTime * changePositionSpeed;
             }
         }
 
@@ -29,12 +27,10 @@ public class PlayerMove : MonoBehaviour
         {
             if (this.gameObject.transform.position.x < RoadBoundaries.rightSide)
             {
-                transform.Translate(Vector3.right * Time.deltaTime * changePositionSpeed);
+                direction += Vector3.right * Time.deltaTime * changePositionSpeed;
             }
         }
 
-      
-        
-
+        characterController.Move(direction);
     }
 }
