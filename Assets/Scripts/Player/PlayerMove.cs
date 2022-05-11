@@ -7,12 +7,15 @@ public class PlayerMove : MonoBehaviour
     public float movementSpeed = 1f;
     public float changePositionSpeed = 10f;
 
+    
+
     [SerializeField]
     private CharacterController characterController;
 
     // Update is called once per frame
-    void Update()
+     void Update()
     {
+
         Vector3 direction = Vector3.forward * Time.deltaTime * movementSpeed;
 
         if (Input.GetKey(KeyCode.LeftArrow))
@@ -32,5 +35,10 @@ public class PlayerMove : MonoBehaviour
         }
 
         characterController.Move(direction);
+
+
+      
     }
+
+    
 }
