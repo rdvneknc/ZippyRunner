@@ -8,7 +8,7 @@ public class CollectKey : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("It WORKSSSSSSSSSSSS");
+        
         coinSound.Play();
         this.gameObject.SetActive(false);
     }

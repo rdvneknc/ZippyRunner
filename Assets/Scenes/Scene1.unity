@@ -2348,7 +2348,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 20
-  changePositionSpeed: 35
+  changePositionSpeed: 25
   characterController: {fileID: 731712194}
 --- !u!143 &731712194
 CharacterController:
