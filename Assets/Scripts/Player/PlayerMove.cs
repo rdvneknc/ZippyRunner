@@ -56,7 +56,6 @@ public class PlayerMove : MonoBehaviour
         }
       
 
-
         characterController.Move(direction); 
 
     }

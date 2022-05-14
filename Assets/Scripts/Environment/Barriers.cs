@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Enemy : MonoBehaviour
+public class Barriers : MonoBehaviour
 {
 
     private void OnTriggerEnter(Collider other)
