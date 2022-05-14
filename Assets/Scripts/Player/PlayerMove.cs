@@ -7,16 +7,28 @@ public class PlayerMove : MonoBehaviour
     public float movementSpeed = 1f;
     public float changePositionSpeed = 10f;
 
-    
+   
+    public float jumpForce = 5.0f;
+    public float gravity = -20;
 
-    [SerializeField]
-    private CharacterController characterController;
+
+
+    //[SerializeField]
+    public CharacterController characterController;
+
+    void Start()
+    {
+        characterController = GetComponent<CharacterController>();
+
+    }
 
     // Update is called once per frame
-     void Update()
+    void Update()
     {
 
         Vector3 direction = Vector3.forward * Time.deltaTime * movementSpeed;
+        
+        direction.y += gravity * Time.deltaTime;
 
         if (Input.GetKey(KeyCode.LeftArrow))
         {
@@ -34,11 +46,22 @@ public class PlayerMove : MonoBehaviour
             }
         }
 
-        characterController.Move(direction);
-
-
+        if (characterController.isGrounded)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                direction.y = jumpForce;
+                transform.Translate(new Vector3(0, direction.y, 0) * Time.deltaTime);
+            }
+        }
       
+
+
+        characterController.Move(direction); 
+
     }
 
-    
+
+
+
 }
