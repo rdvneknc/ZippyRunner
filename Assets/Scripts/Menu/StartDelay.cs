@@ -8,14 +8,7 @@ public class StartDelay : MonoBehaviour
   
     void Start()
     {
-        
         StartCoroutine("DelayStart");
-    }
-
-    private void Update()
-    {
-
-        
     }
 
     IEnumerator DelayStart()

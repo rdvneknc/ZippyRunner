@@ -13,22 +13,18 @@ public class PlayerMove : MonoBehaviour
     //private Rigidbody rb;
     //public float horizontalMovement;
 
-
-
     [SerializeField]
-    public CharacterController characterController;
+    private CharacterController characterController;
 
     void Start()
     {
         characterController = GetComponent<CharacterController>();
         
         //rb = GetComponent<Rigidbody>();
-
     }
 
     void Update()
     {
-
         Vector3 direction = Vector3.forward * Time.deltaTime * movementSpeed;
         
         direction.y += gravity * Time.deltaTime;
