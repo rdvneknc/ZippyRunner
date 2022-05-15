@@ -25,6 +25,7 @@ public class StartDelay : MonoBehaviour
         float pauseTime = Time.realtimeSinceStartup + 3;
          while (Time.realtimeSinceStartup < pauseTime)
            yield return 0;
+
         Time.timeScale = 1;
 
     }

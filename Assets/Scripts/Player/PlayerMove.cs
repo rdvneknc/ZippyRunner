@@ -4,25 +4,28 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    public float movementSpeed = 1f;
-    public float changePositionSpeed = 10f;
+    public float movementSpeed = 1.0f;
+    public float changePositionSpeed = 10.0f;
 
-   
     public float jumpForce = 5.0f;
-    public float gravity = -20;
+    public float gravity = -20.0f;
+
+    //private Rigidbody rb;
+    //public float horizontalMovement;
 
 
 
-    //[SerializeField]
+    [SerializeField]
     public CharacterController characterController;
 
     void Start()
     {
         characterController = GetComponent<CharacterController>();
+        
+        //rb = GetComponent<Rigidbody>();
 
     }
 
-    // Update is called once per frame
     void Update()
     {
 
@@ -51,16 +54,28 @@ public class PlayerMove : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 direction.y = jumpForce;
-                transform.Translate(new Vector3(0, direction.y, 0) * Time.deltaTime);
+                transform.Translate(new Vector3(0, direction.y, 0) * Time.deltaTime, Space.World);
             }
         }
       
 
-        characterController.Move(direction); 
+        characterController.Move(direction);
+
 
     }
 
+    /*void FixedUpdate()
+    {
+        float horizontalMovement = Input.GetAxis("Horizontal") * movementSpeed;
 
+        transform.Translate(Vector3.forward * movementSpeed * Time.deltaTime);
+        transform.Translate(Vector3.right * changePositionSpeed * horizontalMovement * Time.deltaTime);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
+    }*/
 
 
 }

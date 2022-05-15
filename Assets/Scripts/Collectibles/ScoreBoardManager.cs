@@ -18,5 +18,6 @@ public class ScoreBoardManager : MonoBehaviour
     void Update()
     {
         scoreBoard.GetComponent<Text>().text = "" + keyCount;
+        
     }
 }
