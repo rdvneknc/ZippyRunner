@@ -14,11 +14,11 @@ public class PlayerMove : MonoBehaviour
     //public float horizontalMovement;
 
     [SerializeField]
-    private CharacterController characterController;
+    private CharacterController CharacterController;
 
     void Start()
     {
-        characterController = GetComponent<CharacterController>();
+        CharacterController = GetComponent<CharacterController>();
         
         //rb = GetComponent<Rigidbody>();
     }
@@ -45,7 +45,7 @@ public class PlayerMove : MonoBehaviour
             }
         }
 
-        if (characterController.isGrounded)
+        if (CharacterController.isGrounded)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -55,7 +55,7 @@ public class PlayerMove : MonoBehaviour
         }
       
 
-        characterController.Move(direction);
+        CharacterController.Move(direction);
 
 
     }
